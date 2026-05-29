@@ -5,7 +5,7 @@ import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi'
 const socials = [
   { icon: <FiGithub size={18} />, href: 'https://github.com/antonyalwin44', label: 'GitHub', id: 'footer-github' },
   { icon: <FiLinkedin size={18} />, href: 'https://www.linkedin.com/in/antony-alwin', label: 'LinkedIn', id: 'footer-linkedin' },
-  { icon: <FiMail size={18} />, href: 'mailto:antonyalwin@email.com', label: 'Email', id: 'footer-email' },
+  { icon: <FiMail size={18} />, href: 'mailto:antonyalwin2003@gmail.com', label: 'Email', id: 'footer-email' },
 ]
 
 const navLinks = ['About', 'Skills', 'Experience', 'Projects', 'Contact']

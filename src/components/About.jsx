@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiCode, FiBriefcase, FiLayers, FiZap } from 'react-icons/fi'
+import profileImg from '../assets/profile.jpg'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -11,25 +12,25 @@ const fadeUp = {
 }
 
 const stats = [
-  { icon: <FiCode />, value: '3+', label: 'Web Projects', color: '#00D4FF' },
+  { icon: <FiCode />, value: '3', label: 'Projects Built', color: '#00D4FF' },
   { icon: <FiBriefcase />, value: '2', label: 'Internships', color: '#8B5CF6' },
-  { icon: <FiLayers />, value: '9+', label: 'Technologies', color: '#00FFFF' },
+  { icon: <FiLayers />, value: '10', label: 'Technologies', color: '#00FFFF' },
   { icon: <FiZap />, value: '∞', label: 'Passion to Learn', color: '#FF0080' },
 ]
 
 const education = [
   {
-    degree: 'MCA — Master of Computer Applications',
-    school: 'S.A Engineering College',
+    degree: 'Master of Computer Applications (MCA)',
+    school: 'S.A. Engineering College, Chennai',
     years: '2024 – 2026',
-    cgpa: '7.38',
+    cgpa: '7.63',
     color: '#00D4FF',
   },
   {
-    degree: 'BCA — Bachelor of Computer Applications',
-    school: 'Vel Tech Ranga Sanku Arts College',
+    degree: 'Bachelor of Computer Applications (BCA)',
+    school: 'Vel Tech Ranga Sanku Arts College, Chennai',
     years: '2021 – 2024',
-    cgpa: '7.4',
+    cgpa: '7.3',
     color: '#8B5CF6',
   },
 ]
@@ -61,7 +62,7 @@ export default function About() {
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-2 border-blue-electric/30 overflow-hidden floating"
                 style={{ boxShadow: '0 0 30px rgba(0,212,255,0.2)' }}>
                 <img
-                  src="/profile.jpg"
+                  src={profileImg}
                   alt="Antony Alwin S"
                   className="w-full h-full object-cover object-top"
                   style={{ transform: 'rotate(-6deg) scale(1.15)' }}
@@ -69,7 +70,7 @@ export default function About() {
               </div>
               {[
                 { label: 'React Native', pos: { top: '-12px', right: '-20px' }, color: '#00D4FF', delay: '0s' },
-                { label: 'Python', pos: { bottom: '20px', left: '-28px' }, color: '#8B5CF6', delay: '1.5s' },
+                { label: 'SQL & Database', pos: { bottom: '20px', left: '-28px' }, color: '#8B5CF6', delay: '1.5s' },
                 { label: 'MCA 2026', pos: { top: '40%', right: '-44px' }, color: '#00FFFF', delay: '3s' },
               ].map(b => (
                 <div key={b.label} className="absolute glass px-3 py-1 rounded-full text-xs font-bold border floating"

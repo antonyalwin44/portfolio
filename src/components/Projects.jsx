@@ -5,39 +5,42 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi'
 const projects = [
   {
     title: 'BuildMate',
-    description: 'A full-featured building materials management mobile application with multi-role portals for admins, customers, and delivery drivers.',
-    tech: ['React Native', 'Supabase', 'TypeScript'],
-    features: ['Admin Portal', 'Customer Portal', 'Driver Portal', 'Inventory Mgmt', 'Cart & Checkout', 'Delivery Tracking'],
+    subtitle: 'Final Year MCA Project',
+    description: 'Developed a scalable, multi-role mobile application mapping workflows for 5 to 6 user profiles, implementing role-based access control (RBAC), real-time order tracking, and inventory management.',
+    tech: ['React Native', 'TypeScript', 'Supabase', 'PostgreSQL'],
+    features: ['RBAC', 'Real-time Tracking', 'Inventory Mgmt', 'Proof of Delivery', 'Supabase DB Sync'],
     color: '#00D4FF',
     gradient: 'from-cyan-500/20 to-blue-500/20',
     emoji: '🏗️',
-    github: 'https://github.com/antonyalwin',
-    demo: '#',
+    github: 'https://github.com/antonyalwin44',
+    demo: '',
     id: 'buildmate',
   },
   {
-    title: 'AI Virtual Mouse',
-    description: 'A computer vision project that uses hand gesture recognition to control the mouse cursor without physical hardware.',
-    tech: ['Python', 'OpenCV', 'MediaPipe', 'PyAutoGUI'],
-    features: ['Gesture Recognition', 'Virtual Cursor', 'Left / Right Click', 'Scrolling', 'Drag Support'],
+    title: 'Rhyno EV Website',
+    subtitle: 'Teachnook Capstone Project',
+    description: 'Engineered a highly responsive electric vehicle web application using React for optimal cross-device performance, featuring modular UI components and booking flows.',
+    tech: ['React', 'CSS3', 'GitHub', 'Netlify'],
+    features: ['Responsive UI', 'Reusable Components', 'Booking Flows', 'Product Navigation'],
     color: '#8B5CF6',
     gradient: 'from-purple-500/20 to-pink-500/20',
-    emoji: '🖱️',
-    github: 'https://github.com/antonyalwin',
-    demo: '#',
-    id: 'ai-virtual-mouse',
+    emoji: '⚡',
+    github: 'https://github.com/antonyalwin44',
+    demo: 'https://spiffy-starship-98da1.netlify.app/',
+    id: 'rhyno-ev',
   },
   {
-    title: 'Personal Portfolio',
-    description: 'A responsive personal portfolio website showcasing projects, skills, and professional experience with a modern interactive UI.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    features: ['Responsive Layout', 'Smooth Animations', 'Interactive UI', 'GitHub Integration', 'Fast Loading'],
+    title: 'AI Virtual Mouse',
+    subtitle: 'BCA Final Year Project (2024)',
+    description: 'A computer vision project utilizing hand gesture recognition to control the desktop mouse cursor and execute triggers without physical hardware.',
+    tech: ['Python', 'OpenCV', 'MediaPipe', 'PyAutoGUI'],
+    features: ['Gesture Recognition', 'Virtual Cursor', 'Click Actions', 'Scroll Control', 'Drag & Drop'],
     color: '#00FFFF',
     gradient: 'from-teal-500/20 to-cyan-500/20',
-    emoji: '🌐',
-    github: 'https://github.com/antonyalwin',
-    demo: '#',
-    id: 'personal-portfolio',
+    emoji: '🖱️',
+    github: 'https://github.com/antonyalwin44',
+    demo: '',
+    id: 'ai-virtual-mouse',
   },
 ]
 
@@ -83,27 +86,52 @@ function ProjectCard({ project, i, inView }) {
       </div>
 
       {/* Card body */}
-      <div className="p-6">
-        <h3 className="text-xl font-display font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
+      <div className="p-6 flex flex-col justify-between h-[calc(100%-12rem)]">
+        <div>
+          <div className="mb-2">
+            <h3 className="text-xl font-display font-bold text-white">{project.title}</h3>
+            {project.subtitle && (
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider block mt-1" style={{ color: project.color }}>
+                {project.subtitle}
+              </span>
+            )}
+          </div>
+          <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
 
-        {/* Features */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.features.map(f => (
-            <span key={f} className="px-2 py-0.5 text-xs rounded-full glass border border-white/10 text-slate-300">
-              {f}
-            </span>
-          ))}
+          {/* Features */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.features.map(f => (
+              <span key={f} className="px-2 py-0.5 text-xs rounded-full glass border border-white/10 text-slate-300">
+                {f}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Tech stack */}
-        <div className="flex flex-wrap gap-2 pt-4" style={{ borderTop: `1px solid ${project.color}20` }}>
-          {project.tech.map(t => (
-            <span key={t} className="px-3 py-1 text-xs font-bold rounded-full"
-              style={{ background: project.color + '15', color: project.color, border: `1px solid ${project.color}40` }}>
-              {t}
-            </span>
-          ))}
+        {/* Footer with Tech & Links */}
+        <div className="flex items-center justify-between pt-4 mt-auto" style={{ borderTop: `1px solid ${project.color}20` }}>
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-1.5 max-w-[70%]">
+            {project.tech.map(t => (
+              <span key={t} className="px-2 py-0.5 text-[10px] font-bold rounded-full"
+                style={{ background: project.color + '15', color: project.color, border: `1px solid ${project.color}30` }}>
+                {t}
+              </span>
+            ))}
+          </div>
+          {/* Links */}
+          <div className="flex items-center gap-3">
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200" aria-label="GitHub Link">
+                <FiGithub size={18} />
+              </a>
+            )}
+            {project.demo && (
+              <a href={project.demo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200" aria-label="Demo Link">
+                <FiExternalLink size={18} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

@@ -2,21 +2,22 @@ import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   SiHtml5, SiCss, SiJavascript, SiPython, SiMysql,
-  SiReact, SiGithub, SiOpenai, SiNodedotjs
+  SiReact, SiGithub, SiOpenai
 } from 'react-icons/si'
-import { FaRobot } from 'react-icons/fa'
+import { FiBarChart2 } from 'react-icons/fi'
+import { FaFileExcel } from 'react-icons/fa'
 
 const skills = [
-  { name: 'HTML5',       level: 90, color: '#E34F26', Icon: SiHtml5 },
-  { name: 'CSS3',        level: 85, color: '#1572B6', Icon: SiCss },
-  { name: 'JavaScript',  level: 80, color: '#F7DF1E', Icon: SiJavascript },
-  { name: 'Python',      level: 75, color: '#3776AB', Icon: SiPython },
-  { name: 'SQL',         level: 70, color: '#00758F', Icon: SiMysql },
-  { name: 'React Native',level: 72, color: '#61DAFB', Icon: SiReact },
-  { name: 'Node.js',     level: 74, color: '#339933', Icon: SiNodedotjs },
-  { name: 'GitHub',      level: 82, color: '#e2e8f0', Icon: SiGithub },
-  { name: 'Prompt Eng.', level: 88, color: '#00D4FF', Icon: SiOpenai },
-  { name: 'AI Tools',    level: 85, color: '#8B5CF6', Icon: FaRobot },
+  { name: 'React.js',          level: 80, color: '#00D4FF', Icon: SiReact },
+  { name: 'SQL',               level: 80, color: '#00758F', Icon: SiMysql },
+  { name: 'JavaScript',        level: 82, color: '#F7DF1E', Icon: SiJavascript },
+  { name: 'Python (Basic)',    level: 70, color: '#3776AB', Icon: SiPython },
+  { name: 'HTML5',             level: 90, color: '#E34F26', Icon: SiHtml5 },
+  { name: 'CSS3',              level: 85, color: '#1572B6', Icon: SiCss },
+  { name: 'GitHub',            level: 82, color: '#FFFFFF', Icon: SiGithub },
+  { name: 'Prompt Eng.',       level: 88, color: '#00D4FF', Icon: SiOpenai },
+  { name: 'Power BI',          level: 72, color: '#F2C811', Icon: FiBarChart2 },
+  { name: 'MS Excel',          level: 85, color: '#217346', Icon: FaFileExcel },
 ]
 
 function CircleProgress({ level, color, inView, Icon }) {
@@ -110,7 +111,7 @@ export default function Skills() {
           transition={{ delay: 1, duration: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mt-12"
         >
-          {['VS Code', 'Supabase', 'Firebase', 'TypeScript', 'ChatGPT', 'Figma', 'Vercel', 'Expo'].map(tag => (
+          {['VS Code', 'GitHub', 'Excel', 'Power BI', 'Google Fonts', 'Figma'].map(tag => (
             <span key={tag}
               className="px-4 py-1.5 rounded-full text-xs font-medium text-slate-300 glass border border-white/10 hover:border-blue-electric/40 hover:text-blue-electric transition-all duration-300">
               {tag}

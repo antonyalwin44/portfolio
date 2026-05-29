@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { FiMail, FiPhone, FiLinkedin, FiGithub, FiMapPin, FiSend } from 'react-icons/fi'
 
 const contactInfo = [
-  { icon: <FiMail size={18} />, label: 'Email', value: 'antonyalwin@email.com', href: 'mailto:antonyalwin@email.com', color: '#00D4FF', id: 'contact-email' },
+  { icon: <FiMail size={18} />, label: 'Email', value: 'antonyalwin2003@gmail.com', href: 'mailto:antonyalwin2003@gmail.com', color: '#00D4FF', id: 'contact-email' },
   { icon: <FiPhone size={18} />, label: 'Phone', value: '+91 63699 21880', href: 'tel:+916369921880', color: '#8B5CF6', id: 'contact-phone' },
   { icon: <FiLinkedin size={18} />, label: 'LinkedIn', value: 'linkedin.com/in/antony-alwin', href: 'https://www.linkedin.com/in/antony-alwin', color: '#0077B5', id: 'contact-linkedin' },
   { icon: <FiGithub size={18} />, label: 'GitHub', value: 'github.com/antonyalwin44', href: 'https://github.com/antonyalwin44', color: '#ffffff', id: 'contact-github' },
@@ -14,14 +14,45 @@ export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 3000)
-    setForm({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setError(false)
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: "f846ccb9-0a28-44ae-a170-f21fb918fd46",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `New Portfolio Message from ${form.name}`
+        })
+      })
+
+      const data = await response.json()
+      if (data.success) {
+        setSent(true)
+        setForm({ name: '', email: '', message: '' })
+        setTimeout(() => setSent(false), 4000)
+      } else {
+        setError(true)
+      }
+    } catch (err) {
+      setError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -125,12 +156,29 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 id="submit-form-btn"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(0,212,255,0.4)' }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3.5 rounded-xl font-semibold text-white text-sm flex items-center justify-center gap-2 transition-all duration-300"
-                style={{ background: sent ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'linear-gradient(135deg, #00D4FF, #8B5CF6)' }}
+                disabled={isSubmitting}
+                whileHover={isSubmitting ? {} : { scale: 1.02, boxShadow: '0 0 30px rgba(0,212,255,0.4)' }}
+                whileTap={isSubmitting ? {} : { scale: 0.98 }}
+                className="w-full py-3.5 rounded-xl font-semibold text-white text-sm flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed"
+                style={{
+                  background: sent
+                    ? 'linear-gradient(135deg, #22c55e, #16a34a)'
+                    : error
+                    ? 'linear-gradient(135deg, #ef4444, #dc2626)'
+                    : 'linear-gradient(135deg, #00D4FF, #8B5CF6)'
+                }}
               >
-                {sent ? '✓ Message Sent!' : <><FiSend size={16} /> Send Message</>}
+                {isSubmitting ? (
+                  <span>Sending...</span>
+                ) : sent ? (
+                  <span>✓ Message Sent!</span>
+                ) : error ? (
+                  <span>✗ Error! Check Access Key</span>
+                ) : (
+                  <>
+                    <FiSend size={16} /> Send Message
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>

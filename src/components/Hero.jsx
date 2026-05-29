@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiMail, FiChevronDown } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiChevronDown, FiArrowRight } from 'react-icons/fi'
+import resumePdf from '../assets/resume.pdf'
 
-const roles = [
-  'MCA Student',
-  'Web Developer',
-  'React Native Learner',
-  'AI Enthusiast',
-  'Future Software Engineer',
-]
+// Static role subtitle is used instead of rotating array
 
 function ParticleCanvas() {
   const canvasRef = useRef(null)
@@ -85,14 +80,7 @@ function ParticleCanvas() {
 }
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex(i => (i + 1) % roles.length)
-    }, 2800)
-    return () => clearInterval(interval)
-  }, [])
+  // Static subtitle used; no roles array or timer needed
 
   const handleScroll = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
@@ -135,20 +123,11 @@ export default function Hero() {
           <span className="block gradient-text">ALWIN S</span>
         </motion.h1>
 
-        {/* Animated role */}
-        <div className="h-12 flex items-center justify-center mb-6 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={roleIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="text-xl sm:text-2xl font-medium text-blue-electric tracking-wide"
-            >
-              {roles[roleIndex]}
-            </motion.p>
-          </AnimatePresence>
+        {/* Subtitle */}
+        <div className="mb-6">
+          <p className="text-xl sm:text-2xl font-medium text-blue-electric tracking-wide">
+            MCA Student & Web/Mobile Developer
+          </p>
         </div>
 
         {/* Intro */}
@@ -179,7 +158,7 @@ export default function Hero() {
             Explore Projects
           </motion.button>
           <motion.a
-            href="/resume.pdf"
+            href={resumePdf}
             download="Antony_Alwin_Resume.pdf"
             whileHover={{ scale: 1.05, borderColor: '#00D4FF', boxShadow: '0 0 20px rgba(0,212,255,0.3)' }}
             whileTap={{ scale: 0.95 }}
@@ -200,7 +179,7 @@ export default function Hero() {
           {[
             { icon: <FiGithub size={20} />, href: 'https://github.com/antonyalwin44', label: 'GitHub', id: 'hero-github' },
             { icon: <FiLinkedin size={20} />, href: 'https://www.linkedin.com/in/antony-alwin', label: 'LinkedIn', id: 'hero-linkedin' },
-            { icon: <FiMail size={20} />, href: 'mailto:antonyalwin@email.com', label: 'Email', id: 'hero-email' },
+            {icon: <FiMail size={20} />, href: 'mailto:antonyalwin2003@gmail.com', label: 'Email', id: 'hero-email' },
           ].map(social => (
             <motion.a
               key={social.label}
