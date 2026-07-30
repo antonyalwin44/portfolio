@@ -5,6 +5,12 @@ import { FiGithub, FiExternalLink, FiMaximize2, FiX, FiChevronLeft, FiChevronRig
 import powerbiImg1 from '../assets/powerbi_healthcare_summary.png'
 import powerbiImg2 from '../assets/powerbi_healthcare_detail.png'
 
+import buildmateLogin from '../assets/buildmate_login.png'
+import buildmateHome from '../assets/buildmate_home.png'
+import buildmateDashboard from '../assets/buildmate_dashboard.png'
+import buildmateOrders from '../assets/buildmate_orders.png'
+import buildmateStock from '../assets/buildmate_stock.png'
+
 const projects = [
   {
     title: 'Healthcare Patient Waitlist Analysis',
@@ -40,6 +46,14 @@ const projects = [
     color: '#00D4FF',
     gradient: 'from-cyan-500/20 to-blue-500/20',
     emoji: '🏗️',
+    image: buildmateDashboard,
+    images: [
+      { src: buildmateDashboard, title: 'Admin Overview & Quick Actions' },
+      { src: buildmateLogin, title: 'Sign In & Authentication' },
+      { src: buildmateHome, title: 'Product Catalog & Categories' },
+      { src: buildmateOrders, title: 'Order Tracking & Status' },
+      { src: buildmateStock, title: 'Real-Time Stock Availability' }
+    ],
     github: 'https://github.com/antonyalwin44/Thangam-Agency',
     demo: '',
     id: 'buildmate',
