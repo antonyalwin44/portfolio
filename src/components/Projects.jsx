@@ -11,6 +11,8 @@ import buildmateDashboard from '../assets/buildmate_dashboard.png'
 import buildmateOrders from '../assets/buildmate_orders.png'
 import buildmateStock from '../assets/buildmate_stock.png'
 
+import rhynoEvImg from '../assets/rhyno_ev.png'
+
 const projects = [
   {
     title: 'Healthcare Patient Waitlist Analysis',
@@ -67,6 +69,10 @@ const projects = [
     color: '#8B5CF6',
     gradient: 'from-purple-500/20 to-pink-500/20',
     emoji: '⚡',
+    image: rhynoEvImg,
+    images: [
+      { src: rhynoEvImg, title: 'Rhyno EV Landing Page & Pre-Booking' }
+    ],
     github: 'https://github.com/antonyalwin44/TEACHNOOK-CAPSTONE-PROJECT',
     demo: 'https://spiffy-starship-98da1.netlify.app/',
     id: 'rhyno-ev',
