@@ -87,7 +87,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg pt-24 pb-12 sm:pt-32">
       {/* Animated particle canvas */}
       <ParticleCanvas />
 
@@ -101,34 +101,16 @@ export default function Hero() {
 
       {/* Main Content */}
       <div className="relative z-10 text-center section-container">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8 border border-blue-electric/20"
-        >
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-sm text-slate-300 font-medium tracking-wide">Available for opportunities</span>
-        </motion.div>
-
         {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl sm:text-7xl lg:text-9xl font-display font-black tracking-tighter mb-4 leading-none"
+          className="text-4xl sm:text-6xl lg:text-8xl font-display font-black tracking-tighter mb-6 leading-none"
         >
           <span className="block text-white">ANTONY</span>
           <span className="block gradient-text">ALWIN S</span>
         </motion.h1>
-
-        {/* Subtitle */}
-        <div className="mb-6">
-          <p className="text-xl sm:text-2xl font-medium text-blue-electric tracking-wide">
-            MCA Student & Web/Mobile Developer
-          </p>
-        </div>
 
         {/* Intro */}
         <motion.p
@@ -160,9 +142,11 @@ export default function Hero() {
           <motion.a
             href={resumePdf}
             download="Antony_Alwin_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, borderColor: '#00D4FF', boxShadow: '0 0 20px rgba(0,212,255,0.3)' }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 rounded-full font-semibold text-sm tracking-wide border border-slate-600 text-slate-300 hover:text-white transition-all duration-300"
+            className="px-8 py-4 rounded-full font-semibold text-sm tracking-wide border border-slate-600 text-slate-300 hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-2"
             id="download-resume-btn"
           >
             Download Resume
